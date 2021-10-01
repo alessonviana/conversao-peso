@@ -1,37 +1,36 @@
-# 
+# conversao-peso Deployment
 apiVersion: apps/v1
 kind: apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: conversao-temperatura
+  name: conversao-peso
 spec:
   selector:
     matchLabels:
-      app: conversao-temperatura
+      app: conversao-peso
   template:
     metadata:
       labels:
-        app: conversao-temperatura
+        app: conversao-peso
     spec:
       containers:
-      - name: conversao-temperatura
-        image: alessonviana/conversao-temperatura:v1
+      - name: conversao-peso
+        image: alessonviana/conversao-peso:v1
         ports:
-          - containerPort: 8080
-
+          - containerPort: 5000
 ---
-# conversao-temperatura Service
+# conversao-peso Service
 apiVersion: v1
 kind: apiVersion: v1
 kind: Service
 metadata:
-  name: conversao-temperatura
+  name: conversao-peso
 spec:
   selector:
-    app: conversao-temperatura
+    app: conversao-peso
   ports:
-  - port: 8080
-    targetPort: 8080
+  - port: 5000
+    targetPort: 80
   type: ClusterIP
 
 
